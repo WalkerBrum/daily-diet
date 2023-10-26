@@ -1,10 +1,12 @@
 import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold } from '@expo-google-fonts/nunito-sans';
-import { Text, StatusBar } from 'react-native';
-
-import { Home } from './src/screens/Home';
+import { StatusBar } from 'react-native';
 import { ThemeProvider } from 'styled-components';
 
+import { Home } from './src/screens/Home';
+import { Loading } from '@components/Loading';
+
 import theme from './src/theme';
+
 
 export default function App() {
   const [fontsLoaded] = useFonts({ NunitoSans_400Regular, NunitoSans_700Bold});
@@ -16,7 +18,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      { fontsLoaded ? <Home /> : <Text>Loading</Text> }
+      { fontsLoaded ? <Home /> : <Loading /> }
     </ThemeProvider>
   );
 }
