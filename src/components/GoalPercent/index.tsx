@@ -11,7 +11,11 @@ export const GoalPercent = ({ backgroundColor = 'PRIMARY'}: GoalPercentProps) =>
     <Container backgroundColor={backgroundColor}>
       <PercentTitle>90,86%</PercentTitle>
       <SubTitle>das refeições dentro da dieta</SubTitle>
-      <ButtonIcon icon="arrow-up-right" type={backgroundColor}/>
+
+      <ButtonIcon 
+        icon="arrow-up-right"
+        type={backgroundColor}
+      />
     </Container>
   )
 }
