@@ -11,7 +11,7 @@ type IconProps = {
 export const Container = styled(TouchableOpacity)`
   position: absolute;
   top: 8px;
-  right: 8px;
+  left: 8px;
 `;
 
 export const Icon = styled(Feather).attrs<IconProps>(({ theme, type }) => ({
