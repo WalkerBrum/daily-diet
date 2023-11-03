@@ -1,20 +1,23 @@
 import { ButtonIcon } from '@components/ButtonIcon';
 
-import { Container, Icon, PercentTitle, SubTitle, backgroundColorStyleProps } from './styles';
+import { ColorTypeStyleProps } from 'src/@types/colors';
+
+import { Container, Icon, PercentTitle, SubTitle } from './styles';
+
 
 type GoalPercentProps = {
-  backgroundColor?: backgroundColorStyleProps
+  backgroundColor?: ColorTypeStyleProps
 }
 
-export const GoalPercent = ({ backgroundColor = 'PRIMARY' }: GoalPercentProps) => {
+export const GoalPercent = ({ backgroundColor = 'PRIMARY'}: GoalPercentProps) => {
   return (
-    <Container backgroundColor={backgroundColor}>
+    <Container color={backgroundColor}>
       <PercentTitle>90,86%</PercentTitle>
       <SubTitle>das refeições dentro da dieta</SubTitle>
 
-      <Icon 
+      <Icon
         name="arrow-up-right"
-        backgroundColor={backgroundColor}
+        color={backgroundColor}
       />
     </Container>
   )

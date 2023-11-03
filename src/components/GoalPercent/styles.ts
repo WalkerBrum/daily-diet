@@ -1,14 +1,9 @@
 import styled, { css } from 'styled-components/native';
 import { TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { ColorProps } from 'src/@types/colors';
 
-export type backgroundColorStyleProps = 'PRIMARY' | 'SECONDARY';
-
-type Props = {
-  backgroundColor: backgroundColorStyleProps;
-}
-
-export const Container = styled(TouchableOpacity)<Props>`
+export const Container = styled(TouchableOpacity)<ColorProps>`
   margin-top: 33px;
   padding: 20px 0;
 
@@ -16,7 +11,7 @@ export const Container = styled(TouchableOpacity)<Props>`
   justify-content: center;
   gap: 2px;
 
-  background-color: ${({ theme, backgroundColor }) => backgroundColor === 'PRIMARY' ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
+  background-color: ${({ theme, color }) => color === 'PRIMARY' ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
   border-radius: 8px;
 `;
 
@@ -25,6 +20,7 @@ export const PercentTitle = styled.Text`
     font-size: ${theme.FONT_SIZE.FONT_32}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
     color: ${theme.COLORS.GRAY_700};
+    line-height: ${theme.FONT_SIZE.FONT_32 * 1.3}px;
   `};
 `;
 
@@ -36,9 +32,9 @@ export const SubTitle = styled.Text`
   `};
 `;
 
-export const Icon = styled(Feather).attrs<Props>(({ theme, backgroundColor }) => ({
+export const Icon = styled(Feather).attrs<ColorProps>(({ theme, color }) => ({
   size: 24,
-  color: backgroundColor === "PRIMARY" ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK 
+  color: color === "PRIMARY" ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK 
 }))`
   position: absolute;
   top: 8px;

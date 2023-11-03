@@ -7,9 +7,19 @@ import { MealCard } from './components/MealCard';
 
 import { Container, DailyMeal, Separator, Subtitle } from './styles';
 import { SectionList } from 'react-native';
+import { StatusMealStyleProps } from './components/MealCard/styles';
+
+type Meals = {
+  title: string
+  data: {
+    time: string
+    mealName: string
+    status: StatusMealStyleProps
+  }[]
+}
 
 export const Home = () => {
-  const [meals, setMeals] = useState(
+  const [meals, setMeals] = useState<Meals[]>(
     [
       {
         title: '12.08.22',

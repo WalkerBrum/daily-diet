@@ -2,20 +2,16 @@ import styled from 'styled-components/native';
 import { TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-export type ButtonIconTypeStyleProps = "PRIMARY" | "SECONDARY";
-
-type IconProps = {
-  type: ButtonIconTypeStyleProps
-}
+import { ColorProps } from 'src/@types/colors';
 
 export const Container = styled(TouchableOpacity)`
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 56px;
+  left: 24px;
 `;
 
-export const Icon = styled(Feather).attrs<IconProps>(({ theme, type }) => ({
+export const Icon = styled(Feather).attrs<ColorProps>(({ theme, color }) => ({
   size: 24,
-  color: type === "PRIMARY" ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK 
+  color: color === "PRIMARY" ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK 
 }))``;
 

@@ -2,14 +2,14 @@ import { TouchableOpacityProps } from "react-native";
 
 import { Container, MealName, StatusMeal, StatusMealStyleProps, Time } from "./styles";
 
-export type dataProps = {
+export type DataProps = {
   time: string;
   mealName: string;
-  status: StatusMealStyleProps
+  status: StatusMealStyleProps;
 }
 
 type MealCardProps = TouchableOpacityProps & {
-  data: dataProps
+  data: DataProps
 }
 
 export const MealCard = ({ data, ...rest }: MealCardProps) => {
