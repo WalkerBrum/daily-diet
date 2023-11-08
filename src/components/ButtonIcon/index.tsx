@@ -7,13 +7,13 @@ import { Container, Icon } from './styles';
 
 type ButtonIconProps = TouchableOpacityProps & {
   icon: keyof typeof Feather.glyphMap;
-  type?: ColorTypeStyleProps
+  color: string
 }
 
-export const ButtonIcon = ({ icon, type, ...rest}: ButtonIconProps) => {
+export const ButtonIcon = ({ icon, color, ...rest}: ButtonIconProps) => {
   return (
     <Container {...rest}>
-      <Icon name={icon} color={type} />
+      <Icon name={icon} color={color} />
     </Container>
   )
 }

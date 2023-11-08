@@ -11,11 +11,13 @@ export const Container = styled.View`
 `;
 
 export const Subtitle = styled.Text`
+  text-align: center;
+  margin-bottom: 23px;
+
   ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.FONT_14}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
     color: ${theme.COLORS.GRAY_700};
-    line-height: ${theme.FONT_SIZE.FONT_32 * 1.3}px;
   `};
 `;
 

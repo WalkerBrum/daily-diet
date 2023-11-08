@@ -1,19 +1,20 @@
 import styled, { css } from 'styled-components/native';
 
-export const Container = styled.View`
+import { ColorProps } from 'src/@types/colors';
+
+export const Container = styled.View<ColorProps>`
   padding: 72px 24px;
-  width: 100%;
   height: 200px;
   
   align-items: center;
 
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ theme, color }) => color === 'PRIMARY' ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
 `;
 
 export const TitleHeader = styled.Text`
   ${({ theme }) => css`
-    font-size: ${theme.FONT_SIZE.FONT_32}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
+    font-size: ${theme.FONT_SIZE.FONT_32}px;
     color: ${theme.COLORS.GRAY_700};
     line-height: ${theme.FONT_SIZE.FONT_32 * 1.3}px;
   `};

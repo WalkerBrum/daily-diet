@@ -6,7 +6,7 @@ type DashboardProps = {
   subtitle: string;
   height?: number;
 }
-export const Dashboard = ({ backgroundColor, title, subtitle, height = 84 }: DashboardProps) => {
+export const Dashboard = ({ backgroundColor, title, subtitle, height = 89 }: DashboardProps) => {
   return (
     <Container backgroundColor={backgroundColor} height={height}>
       <TitleDashboard>{title}</TitleDashboard>

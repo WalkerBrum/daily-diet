@@ -1,11 +1,14 @@
-import { useTheme } from "styled-components"
-import { Dashboard } from "./components/Dashboard"
-import { Header } from "./components/Header"
-import { Container, FlexRow, Subtitle } from "./styles"
-import { GoalPercent } from "@components/GoalPercent"
+import { useTheme } from 'styled-components';
+
+import { Dashboard } from './components/Dashboard';
+
+import { Container, FlexRow, Subtitle } from './styles';
+import { Header } from './components/Header';
+
 
 export const MealStatistics = () => {
-  const { COLORS } = useTheme()
+  const { COLORS, FONT_SIZE } = useTheme();
+
   return (
     <>
       <Header />
@@ -40,6 +43,7 @@ export const MealStatistics = () => {
             backgroundColor={COLORS.RED_LIGHT}
           />
         </FlexRow>
+        
       </Container>
     </>
   )

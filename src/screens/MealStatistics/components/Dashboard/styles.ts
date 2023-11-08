@@ -14,7 +14,7 @@ export const Container = styled.View<ColorProps>`
   align-items: center;
   justify-content: center;
 
-  background-color: ${(theme) => theme.backgroundColor};
+  background-color: ${(props) => props.backgroundColor};
   border-radius: 8px;
 `;
 

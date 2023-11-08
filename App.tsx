@@ -7,6 +7,7 @@ import { Loading } from '@components/Loading';
 
 import theme from './src/theme';
 import { MealStatistics } from '@screens/MealStatistics';
+import { NewMeal } from '@screens/NewMeal';
 
 
 export default function App() {
@@ -19,7 +20,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      { fontsLoaded ? <MealStatistics /> : <Loading /> }
+      { fontsLoaded ? <NewMeal/> : <Loading /> }
     </ThemeProvider>
   );
 }

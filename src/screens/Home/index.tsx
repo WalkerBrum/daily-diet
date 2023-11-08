@@ -79,7 +79,7 @@ export const Home = () => {
       <GoalPercent />
 
       <Subtitle>Refeições</Subtitle>
-      <Button icon="plus" />
+      <Button icon="plus" title="Nova Refeição" />
 
       <Separator />
       
@@ -93,7 +93,8 @@ export const Home = () => {
           <DailyMeal>{title}</DailyMeal>
         )}
         showsVerticalScrollIndicator={false}
-      /> 
+      />
+       
     </Container>
   )
 }
