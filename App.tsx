@@ -2,12 +2,9 @@ import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold } from '@expo-googl
 import { StatusBar } from 'react-native';
 import { ThemeProvider } from 'styled-components';
 
-import { Home } from './src/screens/Home';
 import { Loading } from '@components/Loading';
 
 import theme from './src/theme';
-import { MealStatistics } from '@screens/MealStatistics';
-import { NewMeal } from '@screens/NewMeal';
 import { Routes } from './src/routes';
 
 

@@ -17,6 +17,10 @@ export const NewMeal = () => {
     navigate('home');
   }
 
+  const handleStatusCreateMeal = () => {
+    navigate('statusCreateMeal');
+  }
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <MealHeader 
@@ -52,7 +56,7 @@ export const NewMeal = () => {
         <InsideDiet />
         
         <ContainerButton>
-          <Button title="Cadastrar Refeição" />
+          <Button title="Cadastrar Refeição" onPress={handleStatusCreateMeal} />
         </ContainerButton>
 
       </Container>
