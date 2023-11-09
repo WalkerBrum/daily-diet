@@ -8,6 +8,7 @@ import { MealCard } from './components/MealCard';
 import { Container, DailyMeal, Separator, Subtitle } from './styles';
 import { SectionList } from 'react-native';
 import { StatusMealStyleProps } from './components/MealCard/styles';
+import { useNavigation } from '@react-navigation/native';
 
 type Meals = {
   title: string
@@ -19,6 +20,7 @@ type Meals = {
 }
 
 export const Home = () => {
+  const { navigate } = useNavigation();
   const [meals, setMeals] = useState<Meals[]>(
     [
       {
@@ -72,14 +74,26 @@ export const Home = () => {
       ],
     },
   ])
+
+  const handleMealStatistics = () => {
+    navigate('mealStatistics')
+  }
+
+  const handleNewMeal = () => {
+    navigate('newMeal')
+  }
   return (
     <Container>
       <Header />
 
-      <GoalPercent />
+      <GoalPercent onPress={handleMealStatistics}/>
 
       <Subtitle>Refeições</Subtitle>
-      <Button icon="plus" title="Nova Refeição" />
+      <Button 
+        icon="plus" 
+        title="Nova Refeição"
+        onPress={handleNewMeal} 
+      />
 
       <Separator />
       

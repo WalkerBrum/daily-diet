@@ -1,19 +1,29 @@
-import { FlatList, ScrollView } from 'react-native';
-import { useTheme } from 'styled-components'
+import { ScrollView } from 'react-native';
+import { useTheme } from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
 
 import { MealHeader } from '@components/MealHeader';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
+import { InsideDiet } from '@components/InsideDiet';
 
 import { Container, ContainerButton, FlexDirection, Subtitle } from './styles';
-import { InsideDiet } from '@components/InsideDiet';
 
 export const NewMeal = () => {
   const { COLORS } = useTheme();
+  const { navigate } = useNavigation();
+
+  const handleGoBackHome = () => {
+    navigate('home');
+  }
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-      <MealHeader backgroundColor={COLORS.GRAY_300} title="Nova refeição" />
+      <MealHeader 
+        backgroundColor={COLORS.GRAY_300} 
+        title="Nova refeição"
+        onPress={handleGoBackHome} 
+      />
 
       <Container>
         <Subtitle>Nome</Subtitle>

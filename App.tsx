@@ -8,6 +8,7 @@ import { Loading } from '@components/Loading';
 import theme from './src/theme';
 import { MealStatistics } from '@screens/MealStatistics';
 import { NewMeal } from '@screens/NewMeal';
+import { Routes } from './src/routes';
 
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      { fontsLoaded ? <NewMeal/> : <Loading /> }
+      { fontsLoaded ? <Routes /> : <Loading /> }
     </ThemeProvider>
   );
 }

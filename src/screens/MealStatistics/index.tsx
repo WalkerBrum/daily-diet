@@ -1,17 +1,22 @@
 import { useTheme } from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
 
+import { Header } from './components/Header';
 import { Dashboard } from './components/Dashboard';
 
 import { Container, FlexRow, Subtitle } from './styles';
-import { Header } from './components/Header';
-
 
 export const MealStatistics = () => {
   const { COLORS, FONT_SIZE } = useTheme();
+  const { navigate } = useNavigation();
+
+  const handleGoBackHome = () => {
+    navigate('home');
+  }
 
   return (
     <>
-      <Header />
+      <Header onPress={handleGoBackHome}/>
 
       <Container>
         <Subtitle>Estatísticas gerais</Subtitle>
