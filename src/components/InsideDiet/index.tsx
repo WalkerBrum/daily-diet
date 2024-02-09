@@ -1,42 +1,52 @@
-import React from 'react';
-import { FlatList } from 'react-native';
-import { Controller, Control, FieldValues } from 'react-hook-form';
-import { Container } from './styles';
+import { useState } from 'react';
+import { FlatList, TextInputProps } from 'react-native';
+
 import { InputOption } from '@components/InputOption';
 
-type InsideDietProps = {
-  control: Control<FieldValues, object>;
-};
+import { Container, MessageError } from './styles';
+import { useRegisterMealForm } from '@hooks/useRegisterMealForm';
 
-export const InsideDiet = ({ control }: InsideDietProps) => {
+type InsideDietProps = {
+  errorMessage?: string | undefined;
+  onChange: (value: string) => void;
+}
+
+export const InsideDiet = ({ errorMessage, onChange }: InsideDietProps) => {
+  const [insideDiet, setInsideDiet] = useState<string | undefined>();
+
+  const { setValue } =  useRegisterMealForm()
+
+  const invalid = !!errorMessage;
 
   const options = [
     { key: 'Sim', label: 'Sim' },
     { key: 'Não', label: 'Não' },
   ];
 
+  const handleSelectdOption = (option: string) => {
+    onChange(option);
+    setInsideDiet(option);
+  }
+
   return (
-    <Controller
-      control={control}
-      render={({ field: { onChange, value } }) => (
-        <Container>
-          <FlatList
-            data={options}
-            keyExtractor={(item) => item.key}
-            renderItem={({ item }) => (
-              <InputOption
-                title={item.label}
-                isActive={item.label === value}
-                onPress={() => onChange(item.label)}
-              />
-            )}
-            horizontal
-            contentContainerStyle={{ flexGrow: 1, gap: 8 }}
+    <Container>
+      <FlatList 
+        data={options}
+        keyExtractor={item => item.key}
+        renderItem={({ item }) => 
+          <InputOption
+            title={item.label}
+            isActive={item.label === insideDiet}
+            onPress={() => handleSelectdOption(item.label)}
           />
-        </Container>
+        }
+        horizontal
+        contentContainerStyle={{ flexGrow: 1, gap: 8 }}
+      />
+
+      {invalid && (
+        <MessageError>{errorMessage}</MessageError>
       )}
-      name="insideDiet"
-      defaultValue=""
-    />
-  );
+    </Container>
+  )
 };

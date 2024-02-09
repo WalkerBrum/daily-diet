@@ -1,9 +1,16 @@
-import styled from 'styled-components/native';
+import { TextInput } from 'react-native';
+import styled, { css } from 'styled-components/native';
 
 export const Container = styled.View`
-  width: 100%;
+  gap: 3px;
+`;
 
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+export const MessageError = styled.Text`
+  margin: 4px;
+  
+  ${({ theme }) => css`
+    color: ${theme.COLORS.RED_DARK};
+    font-family: ${theme.FONT_FAMILY.REGULAR};
+    font-size: ${theme.FONT_SIZE.FONT_14}px;
+  `};
 `;
