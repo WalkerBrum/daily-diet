@@ -6,9 +6,8 @@ type FlexDirectionProps = {
 
 export const Container = styled.View`
   flex: 1;
-
   margin-top: -23px;
-  padding: 16px 24px 0 24px;
+  padding: 16px 24px;
   border-radius: 20px;
 
   background-color: ${({ theme }) => theme.COLORS.WHITE};
@@ -30,13 +29,11 @@ export const FlexDirection = styled.View<FlexDirectionProps>`
 
   flex-direction: ${(props) => props.direction};
   gap: ${(props) => props.direction === "row" ? 20 : 0 }px;
-
-  max-height: 107px;
 `;
 
 export const ContainerButton = styled.View`
   flex: 1;
-  
-  margin-top: 80px;
-`
+  justify-content: flex-end;
+  margin-top: 80px; 
+`;
 
