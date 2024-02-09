@@ -9,7 +9,7 @@ export type RegisterMealFormDataProps = {
   description: string;
   date: string;
   time: string;
-  insideDiet: boolean;
+  insideDiet: string;
 }
 
 export const useRegisterMealForm = () => {
@@ -23,7 +23,7 @@ export const useRegisterMealForm = () => {
 
   const onSubmit = (data: RegisterMealFormDataProps) => {
     console.log(data);
-    navigate('home');
+    navigate('statusCreateMeal');
   }
 
   return {
