@@ -1,18 +1,28 @@
 import { TextInput, TextInputProps } from 'react-native';
 
-import { Container } from './styles';
+import { Container, InputText, MessageError } from './styles';
 
 type InputProps = TextInputProps & {
   inputRef?: React.RefObject<TextInput>;
-  height?: number; 
+  height?: number;
+  errorMessage?: string | null;
 }
 
-export const Input = ({ inputRef, height = 48, ...rest }: InputProps) => {
+export const Input = ({ inputRef, errorMessage, height = 48, ...rest }: InputProps) => {
+  const invalid = !!errorMessage;
+
   return (
-    <Container 
-      ref={inputRef}
-      height={height} 
-      {...rest}
-    />
+    <Container>
+      <InputText
+        ref={inputRef}
+        height={height}
+        error={invalid}
+        {...rest}
+      />
+      
+      {invalid && (
+        <MessageError>{errorMessage}</MessageError>
+      )}
+    </Container>
   )
 }
