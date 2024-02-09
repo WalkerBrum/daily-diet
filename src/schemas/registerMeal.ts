@@ -6,6 +6,6 @@ export const registerMeal = () => {
     description: yup.string().min(5, 'Uma descrição de refeição deve ter pelo o menos 5 caracters.').required('Informe uma descrição para a refeição.'),
     date: yup.string().required('Informe a data da refeição.'),
     time: yup.string().required('Informe a hora da refeição.'),
-    insideDiet: yup.boolean().required('Selecione se está dentro da dieta'),
+    insideDiet: yup.string().required('Selecione se está dentro da dieta.'),
    })
 }
