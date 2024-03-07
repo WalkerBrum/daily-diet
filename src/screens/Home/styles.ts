@@ -29,4 +29,5 @@ export const DailyMeal = styled.Text`
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.FONT_18}px;
   `};
+  margin-top: 32px;
 `;

@@ -188,7 +188,7 @@ export const NewMeal = () => {
             }}
             render={() => (
               <InsideDiet
-                onChange={(value: string) => setValue('insideDiet', value)}
+                onChange={(value: string) => setValue('insideDiet', value === 'Sim' ? 'GOOD' : 'BAD')}
                 errorMessage={errors.insideDiet?.message}
               />
           )}
