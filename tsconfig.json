@@ -25,6 +25,9 @@
       "@hooks/*": [
         "./src/hooks/*"
       ],
+      "@dtos/*": [
+        "./src/dtos/*"
+      ],
     }
   }
 }

@@ -3,26 +3,21 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigation } from "@react-navigation/native";
 
 import { registerMeal } from "@schemas/registerMeal";
-
-export type RegisterMealFormDataProps = {
-  name: string;
-  description: string;
-  date: string;
-  time: string;
-  insideDiet: string;
-}
+import { NewMealDTO } from "@dtos/NewMealDTO";
+import { mealCreate } from "@storage/mealCreate";
 
 export const useRegisterMealForm = () => {
   const schema = registerMeal();
 
-  const { control, handleSubmit, setValue, formState: { errors } } = useForm<RegisterMealFormDataProps>({
+  const { control, handleSubmit, setValue, formState: { errors } } = useForm<NewMealDTO>({
     resolver: yupResolver(schema)
   })
 
   const { navigate } = useNavigation();
 
-  const onSubmit = (data: RegisterMealFormDataProps) => {
-    console.log(data);
+  const onSubmit = (data: NewMealDTO) => {
+    console.log(data)
+    mealCreate(data);
     navigate('statusCreateMeal');
   }
 
