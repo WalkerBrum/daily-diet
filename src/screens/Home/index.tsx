@@ -1,93 +1,38 @@
 import { useCallback, useState } from 'react';
+import { SectionList, Alert } from 'react-native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import { Header } from '@components/Header';
 import { GoalPercent } from '@components/GoalPercent';
 import { Button } from '@components/Button';
 import { MealCard } from './components/MealCard';
+import { Loading } from '@components/Loading';
+import { NoMealRecord } from '@components/NoMealRecord';
 
-import { SectionList, Alert } from 'react-native';
-import { StatusMealStyleProps } from './components/MealCard/styles';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { mealGetAll } from '@storage/mealGetAll';
 import { MealsDTO } from '@dtos/MealsDTO';
 
-import { Container, DailyMeal, Separator, Subtitle } from './styles';
-
-type Meals = {
-  title: string;
-  data: {
-    time: string;
-    mealName: string;
-    status: 'GOOD' | 'BAD';
-  }[];
-};
+import { Container, DailyMeal, Subtitle } from './styles';
 
 export const Home = () => {
   const { navigate } = useNavigation();
-  const [meals, setMeals] = useState<MealsDTO[]>([])
-  // const [meals, setMeals] = useState<Meals[]>(
-  //   [
-  //     {
-  //       title: '12.08.22',
-  //       data: [
-  //         {
-  //           time: '09:30',
-  //           mealName: 'Vitamina de banana com abacate',
-  //           status: 'GOOD'
-  //         },
-  //         {
-  //           time: '12:30',
-  //           mealName: 'Salada cesar com frango grelhado',
-  //           status: 'GOOD'
-  //         },
-  //         {
-  //           time: '16:00',
-  //           mealName: 'Whey protein com leite',
-  //           status: 'GOOD'
-  //         },
-  //         {
-  //           time: '20:00',
-  //           mealName: 'x-tudo',
-  //           status: 'BAD'
-  //         },
-  //       ],
-  //   },
-  //   {
-  //     title: '11.08.22',
-  //     data: [
-  //       {
-  //         time: '09:30',
-  //         mealName: 'Vitamina de banana com abacate',
-  //         status: 'GOOD'
-  //       },
-  //       {
-  //         time: '12:30',
-  //         mealName: 'Salada cesar com frango grelhado',
-  //         status: 'GOOD'
-  //       },
-  //       {
-  //         time: '16:00',
-  //         mealName: 'Whey protein com leite',
-  //         status: 'GOOD'
-  //       },
-  //       {
-  //         time: '20:00',
-  //         mealName: 'x-tudo',
-  //         status: 'BAD'
-  //       },
-  //     ],
-  //   },
-  // ]);
-
+  const [meals, setMeals] = useState<MealsDTO[]>([]);
+  const [loading, setLoading] = useState(true);
+ 
   const fetchMeals = async () => {
     try {
+      setLoading(true);
+
       const storageMeals = await mealGetAll();
 
-      setMeals(storageMeals);
+      setMeals(storageMeals)
 
     } catch (error) {
       console.log(error);
-      Alert.alert('Refeições', 'Não foi possível carregar as refeições')
+      Alert.alert('Refeições', 'Não foi possível carregar as refeições');
+
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -101,7 +46,6 @@ export const Home = () => {
 
   useFocusEffect(useCallback(() => {
     fetchMeals()
-    console.log(meals)
   }, []));
 
   return (
@@ -117,22 +61,26 @@ export const Home = () => {
         onPress={handleNewMeal} 
       />
       
-      <SectionList 
-        sections={meals}
-        keyExtractor={(item) => item.time}
-        renderItem={({ item }) => (
-          <MealCard 
-            mealName={item.name}
-            time={item.time}
-            status={item.insideDiet}
-          />
-        )}
-        renderSectionHeader={({ section: { date } }) => (
-          <DailyMeal>{date}</DailyMeal>
-        )}
-        showsVerticalScrollIndicator={false}
-      />
-       
+      { meals.length === 0 ? <NoMealRecord />        
+          :
+        loading ? <Loading /> 
+          : 
+        <SectionList 
+          sections={meals}
+          keyExtractor={(item) => item.time}
+          renderItem={({ item }) => (
+            <MealCard 
+              mealName={item.name}
+              time={item.time}
+              status={item.insideDiet}
+            />
+          )}
+          renderSectionHeader={({ section: { date } }) => (
+            <DailyMeal>{date}</DailyMeal>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      }   
     </Container>
   )
 }
