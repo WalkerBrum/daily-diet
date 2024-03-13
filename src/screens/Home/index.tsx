@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { SectionList, Alert } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
@@ -13,28 +13,11 @@ import { mealGetAll } from '@storage/mealGetAll';
 import { MealsDTO } from '@dtos/MealsDTO';
 
 import { Container, DailyMeal, Subtitle } from './styles';
+import { MealsContext } from '@context/MealsProvider';
 
 export const Home = () => {
   const { navigate } = useNavigation();
-  const [meals, setMeals] = useState<MealsDTO[]>([]);
-  const [loading, setLoading] = useState(true);
- 
-  const fetchMeals = async () => {
-    try {
-      setLoading(true);
-
-      const storageMeals = await mealGetAll();
-
-      setMeals(storageMeals)
-
-    } catch (error) {
-      console.log(error);
-      Alert.alert('Refeições', 'Não foi possível carregar as refeições');
-
-    } finally {
-      setLoading(false);
-    }
-  }
+  const { meals, loading, fetchMeals } = useContext(MealsContext)
 
   const handleMealStatistics = () => {
     navigate('mealStatistics')
@@ -61,9 +44,9 @@ export const Home = () => {
         onPress={handleNewMeal} 
       />
       
-      { meals.length === 0 ? <NoMealRecord />        
+      { loading ? <Loading />   
           :
-        loading ? <Loading /> 
+        meals.length === 0 ? <NoMealRecord />      
           : 
         <SectionList 
           sections={meals}
