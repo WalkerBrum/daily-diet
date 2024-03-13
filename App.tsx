@@ -6,6 +6,7 @@ import { Loading } from '@components/Loading';
 
 import theme from './src/theme';
 import { Routes } from './src/routes';
+import { MealsProvider } from '@context/MealsProvider';
 
 
 export default function App() {
@@ -18,7 +19,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      { fontsLoaded ? <Routes /> : <Loading /> }
+      <MealsProvider>
+        { fontsLoaded ? <Routes /> : <Loading /> }
+      </MealsProvider>
     </ThemeProvider>
   );
 }

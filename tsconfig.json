@@ -28,6 +28,9 @@
       "@dtos/*": [
         "./src/dtos/*"
       ],
+      "@context/*": [
+        "./src/context/*"
+      ],
     }
   }
 }
