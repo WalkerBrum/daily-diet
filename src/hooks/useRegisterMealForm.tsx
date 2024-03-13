@@ -16,7 +16,6 @@ export const useRegisterMealForm = () => {
   const { navigate } = useNavigation();
 
   const onSubmit = (data: NewMealDTO) => {
-    console.log(data)
     mealCreate(data);
     navigate('statusCreateMeal');
   }
