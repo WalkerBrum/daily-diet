@@ -55,7 +55,7 @@ export const mealCreate = async (data: NewMealDTO) => {
     });
 
     await AsyncStorage.setItem(MEALS_COLLECTION, JSON.stringify(storageMeals));
-
+  
   } catch (error) {
     throw error;
   }
