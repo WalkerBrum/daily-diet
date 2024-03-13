@@ -44,10 +44,11 @@ export const Home = () => {
         onPress={handleNewMeal} 
       />
       
-      { loading ? <Loading />   
-          :
-        meals.length === 0 ? <NoMealRecord />      
-          : 
+      { loading ? (
+        <Loading />
+      ) : meals.length === 0 ? (
+        <NoMealRecord />
+      ) : (
         <SectionList 
           sections={meals}
           keyExtractor={(item) => item.time}
@@ -63,7 +64,7 @@ export const Home = () => {
           )}
           showsVerticalScrollIndicator={false}
         />
-      }   
+      )}   
     </Container>
   )
 }

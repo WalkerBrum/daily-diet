@@ -4,6 +4,9 @@ import { Feather } from '@expo/vector-icons';
 import { ColorProps } from 'src/@types/colors';
 
 export const Container = styled(TouchableOpacity)<ColorProps>`
+  flex: 1;
+
+  max-height: 122px;
   margin-top: 33px;
   padding: 20px 0;
 

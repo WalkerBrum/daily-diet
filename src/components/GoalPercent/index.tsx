@@ -3,6 +3,11 @@ import { TouchableOpacityProps } from 'react-native';
 import { ColorTypeStyleProps } from 'src/@types/colors';
 
 import { Container, Icon, PercentTitle, SubTitle } from './styles';
+import { useContext } from 'react';
+import { MealsContext } from '@context/MealsProvider';
+import { percentInsideDiet } from '@utils/percentInsideDiet';
+import { Loading } from '@components/Loading';
+import { NoMealRecord } from '@components/NoMealRecord';
 
 
 type GoalPercentProps = TouchableOpacityProps & {
@@ -10,10 +15,24 @@ type GoalPercentProps = TouchableOpacityProps & {
 }
 
 export const GoalPercent = ({ backgroundColor = 'PRIMARY', ...rest }: GoalPercentProps) => {
+  const { meals, loading } = useContext(MealsContext);
+
+  const percentDiet = percentInsideDiet(meals);
+
   return (
     <Container color={backgroundColor} {...rest}>
-      <PercentTitle>90,86%</PercentTitle>
-      <SubTitle>das refeições dentro da dieta</SubTitle>
+      {!isNaN(percentDiet) ? (
+        <>
+          {loading ? (
+            <Loading />
+          ) : (
+            <PercentTitle>{percentDiet}%</PercentTitle>
+          )}
+          <SubTitle>das refeições dentro da dieta</SubTitle>
+        </>
+      ) : (
+        <NoMealRecord />
+      )}
 
       <Icon
         name="arrow-up-right"
