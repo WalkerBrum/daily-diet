@@ -1,5 +1,5 @@
-import { useCallback, useContext, useState } from 'react';
-import { SectionList, Alert } from 'react-native';
+import { useCallback } from 'react';
+import { SectionList } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import { Header } from '@components/Header';
@@ -9,15 +9,13 @@ import { MealCard } from './components/MealCard';
 import { Loading } from '@components/Loading';
 import { NoMealRecord } from '@components/NoMealRecord';
 
-import { mealGetAll } from '@storage/mealGetAll';
-import { MealsDTO } from '@dtos/MealsDTO';
+import { useMealsContext } from '@hooks/useMealsContext';
 
 import { Container, DailyMeal, Subtitle } from './styles';
-import { MealsContext } from '@context/MealsProvider';
 
 export const Home = () => {
   const { navigate } = useNavigation();
-  const { meals, loading, fetchMeals } = useContext(MealsContext)
+  const { meals, loading, fetchMeals } = useMealsContext();
 
   const handleMealStatistics = () => {
     navigate('mealStatistics')
