@@ -6,9 +6,10 @@ import { ColorProps } from 'src/@types/colors';
 export const Container = styled(TouchableOpacity)<ColorProps>`
   flex: 1;
 
-  max-height: 122px;
+  min-height: 102px;
+  max-height: 102px;
   margin-top: 33px;
-  padding: 20px 0;
+  padding: 20px;
 
   align-items: center;
   justify-content: center;
