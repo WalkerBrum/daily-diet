@@ -10,14 +10,13 @@ import { Loading } from '@components/Loading';
 import { NoMealRecord } from '@components/NoMealRecord';
 
 
-type GoalPercentProps = TouchableOpacityProps & {
-  backgroundColor?: ColorTypeStyleProps
-}
+type GoalPercentProps = TouchableOpacityProps & {}
 
-export const GoalPercent = ({ backgroundColor = 'PRIMARY', ...rest }: GoalPercentProps) => {
+export const GoalPercent = ({ ...rest }: GoalPercentProps) => {
   const { meals, loading } = useContext(MealsContext);
 
   const percentDiet = percentInsideDiet(meals);
+  const backgroundColor = percentDiet >= 50 ? 'PRIMARY' : 'SECONDARY'
 
   return (
     <Container color={backgroundColor} {...rest}>
