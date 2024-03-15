@@ -2,14 +2,14 @@ import { Container, TitleDashboard, SubTitleDashboard } from "./styles";
 
 type DashboardProps = {
   backgroundColor: string;
-  title: string;
+  data: number;
   subtitle: string;
   height?: number;
 }
-export const Dashboard = ({ backgroundColor, title, subtitle, height = 89 }: DashboardProps) => {
+export const Dashboard = ({ backgroundColor, data, subtitle, height = 89 }: DashboardProps) => {
   return (
     <Container backgroundColor={backgroundColor} height={height}>
-      <TitleDashboard>{title}</TitleDashboard>
+      <TitleDashboard>{data}</TitleDashboard>
       <SubTitleDashboard>{subtitle}</SubTitleDashboard>
     </Container>
   )
