@@ -14,7 +14,7 @@ export const GoalPercent = ({ ...rest }: GoalPercentProps) => {
   const { meals, loading } = useMealsContext();
 
   const percentDiet = percentInsideDiet(meals);
-  const backgroundColor = percentDiet >= 50 ? 'PRIMARY' : 'SECONDARY'
+  const backgroundColor = percentDiet <= 50 ? 'SECONDARY' : 'PRIMARY'
 
   return (
     <Container color={backgroundColor} {...rest}>
