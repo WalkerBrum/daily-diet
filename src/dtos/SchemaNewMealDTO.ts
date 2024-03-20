@@ -1,5 +1,4 @@
-export type NewMealDTO = {
-  id: string;
+export type SchemaNewMealDTO = {
   name: string;
   description: string;
   date: string;
