@@ -4,6 +4,7 @@ import { useTheme } from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
 import { Controller } from 'react-hook-form';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { format } from 'date-fns';
 
 import { MealHeader } from '@components/MealHeader';
 import { Input } from '@components/Input';
@@ -14,7 +15,6 @@ import { getTime } from '@utils/getTime';
 import { useRegisterMealForm } from '@hooks/useRegisterMealForm';
 
 import { Container, ContainerButton, FlexDirection, Subtitle } from './styles';
-import { format } from 'date-fns';
 
 export const NewMeal = () => {
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -53,7 +53,6 @@ export const NewMeal = () => {
   const handleCloseTimePicker = () => {
     DateInputRef.current?.blur(); 
   };
-
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
