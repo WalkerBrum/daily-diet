@@ -1,14 +1,15 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { NewMealDTO } from '@dtos/NewMealDTO';
-import { mealGetAll } from './mealGetAll';
-import { MEALS_COLLECTION } from './storageConfig';
 import { MealsDTO } from '@dtos/MealsDTO';
+import { mealGetAll } from '@storage/mealGetAll';
+import { MEALS_COLLECTION } from '@storage/storageConfig';
 import { transformNumber } from '@utils/tranformNumber';
 
 export const mealCreate = async (data: NewMealDTO) => {
   try {
     const dataToStorageSameDate = {
+      id: data.id,
       name: data.name,
       description: data.description,
       time: data.time,

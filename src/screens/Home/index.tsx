@@ -49,7 +49,7 @@ export const Home = () => {
       ) : (
         <SectionList 
           sections={meals}
-          keyExtractor={(item) => item.time}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <MealCard 
               mealName={item.name}
