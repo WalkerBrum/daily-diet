@@ -1,3 +1,4 @@
+import { ColorProps } from 'src/@types/colors';
 import styled, { css } from 'styled-components/native';
 
 export const Container = styled.View`
@@ -7,18 +8,20 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const MessageTitle = styled.Text`
+export const MessageTitle = styled.Text<ColorProps>`
   margin-bottom: 8px;
 
-  ${({ theme }) => css`
+  ${({ theme, color }) => css`
     font-size: ${theme.FONT_SIZE.FONT_24}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
-    color: ${theme.COLORS.GREEN_DARK};
+    color: ${color === 'PRIMARY' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
     line-height: ${theme.FONT_SIZE.FONT_32 * 1.3}px;
   `};
 `;
 
 export const MessageSubtitle = styled.Text`
+  text-align: center;
+  
   ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.FONT_16}px;
     font-family: ${theme.FONT_FAMILY.REGULAR};
