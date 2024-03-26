@@ -1,7 +1,9 @@
 import { TouchableOpacityProps } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
+import { useMealsContext } from "@hooks/useMealsContext";
 
 import { Container, MealName, StatusMeal, StatusMealStyleProps, Time } from "./styles";
-import { useMealsContext } from "@hooks/useMealsContext";
 
 
 type MealCardProps = TouchableOpacityProps & {
@@ -13,9 +15,12 @@ type MealCardProps = TouchableOpacityProps & {
 
 export const MealCard = ({ time, id, mealName, status, ...rest }: MealCardProps) => {
   const { getInfoMeal } = useMealsContext();
+  const { navigate } = useNavigation();
 
   const handleInfoMeal = () => {
     getInfoMeal(id);
+
+    navigate('aboutMeal');
   }
   
   return (

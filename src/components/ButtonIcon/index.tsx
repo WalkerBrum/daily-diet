@@ -1,8 +1,6 @@
 import { TouchableOpacityProps } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-import { ColorProps, ColorTypeStyleProps } from 'src/@types/colors';
-
 import { Container, Icon } from './styles';
 
 type ButtonIconProps = TouchableOpacityProps & {
