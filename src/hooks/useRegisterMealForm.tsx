@@ -21,10 +21,11 @@ export const useRegisterMealForm = () => {
   const { getInsideDiet } = useMealsContext();
 
   const onSubmit = (data: SchemaNewMealDTO) => {
-    const newMeal = {...data, id: uuidv4()}
-    console.log(newMeal);
+    const newMeal = {...data, id: uuidv4()};
+    
     mealCreate(newMeal);
     getInsideDiet(data.insideDiet);
+
     navigate('statusCreateMeal');
   }
 
