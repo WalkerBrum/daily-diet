@@ -15,7 +15,7 @@ import { Container, DailyMeal, Subtitle } from './styles';
 
 export const Home = () => {
   const { navigate } = useNavigation();
-  const { meals, loading, fetchMeals } = useMealsContext();
+  const { meals, loading, fetchMeals, infoMeal } = useMealsContext();
 
   const handleMealStatistics = () => {
     navigate('mealStatistics')
@@ -52,6 +52,7 @@ export const Home = () => {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <MealCard 
+              id={item.id}
               mealName={item.name}
               time={item.time}
               status={item.insideDiet}
